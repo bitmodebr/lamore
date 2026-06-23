@@ -17,9 +17,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv('DEBUG') == 'True'
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [os.getenv('ALLOWED_HOSTS') or '*']
 
 
 # Application definition
@@ -69,21 +69,20 @@ WSGI_APPLICATION = 'setup.wsgi.application'
 
 DATABASES = {
     'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.getenv('POSTGRES_DB'),
+        'USER': os.getenv('POSTGRES_USER'),
+        'PASSWORD': os.getenv('POSTGRES_PASSWORD'),
+        'HOST': os.getenv('HOST_DB'),
+        'PORT': os.getenv('PORT_DB'),
+    },
+    'dev': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     },
-
 }
-'''
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME_DB': os.getenv('POSTGRES_DB'),
-        'USER_DB': os.getenv('POSTGRES_USER'),
-        'PASSWORD_DB': os.getenv('POSTGRES_PASSWORD'),
-        'HOST_DB': os.getenv('HOST'),
-        'PORT_DB': os.getenv('PORT'),
-    }
-'''
+
+
 
 
 # Password validation
