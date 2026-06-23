@@ -1,0 +1,29 @@
+.gitignore
+*.sqlite3
+db.sqlite3
+venv
+.vscode
+*__pycache__
+__pycache__
+.__pychace__
+*.yml
+README.md
+Dockerfile
+.git
+*.env
+*.example
+.dockerignore
+docker-compose.yml
+
+# Static Files Django and project
+static/
+style/
+
+# Nginx Config
+nginx-config/
+
+# Requests Web
+requests-web/
+
+# CI/CD
+.github/
