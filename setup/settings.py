@@ -21,6 +21,10 @@ DEBUG = os.getenv('DEBUG') == 'True'
 
 ALLOWED_HOSTS = [os.getenv('ALLOWED_HOSTS') or '*']
 
+CSRF_TRUSTED_ORIGINS = [
+    os.getenv('CSRF_TRUSTED_ORIGINS') or 'https://*.railway.app',
+]
+
 
 # Application definition
 
